@@ -1,8 +1,8 @@
 # Backlog.md Browser
 
-把 [Backlog.md](https://github.com/kuwork/Backlog.md) 的 Web 看板嵌进 **岩语智图 / DeepSeek Harness**：侧边栏多一个 `Backlog.md` 面板，对话区多一个 `Backlog.md` 标签页，服务按工作区独立启停。
+把 [Backlog.md](https://github.com/kuwork/Backlog.md) 的 Web 看板嵌进 **DeepSeek Harness**：侧边栏多一个 `Backlog.md` 面板，对话区多一个 `Backlog.md` 标签页，服务按工作区独立启停。
 
-A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.md) web board into DeepSeek Harness (Yanyu Zhitu): a sidebar panel, a conversation-view tab, and a session-header menu, each backed by one `backlog browser` process per workspace.
+A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.md) web board into DeepSeek Harness: a sidebar panel, a conversation-view tab, and a session-header menu, each backed by one `backlog browser` process per workspace.
 
 > 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
 
@@ -55,17 +55,17 @@ backlog --version        # 期望 1.53.12-CN
 **A. 从 GitHub（推荐，别人也能装）**
 
 ```sh
-yyzt plugin --profile web add github:<你的 GitHub 用户名>/dsh-backlog-browser
+dsh plugin --profile web add github:<你的 GitHub 用户名>/dsh-backlog-browser
 # 锁版本：
-yyzt plugin --profile web add github:<你的 GitHub 用户名>/dsh-backlog-browser#v0.1.8
+dsh plugin --profile web add github:<你的 GitHub 用户名>/dsh-backlog-browser#v0.1.8
 ```
 
-本包没有构建步骤，不会触发 pnpm 的构建脚本审批。上游 DSH 版本的 CLI 名为 `dsh`，把 `yyzt` 换成 `dsh` 即可。
+本包没有构建步骤，不会触发 pnpm 的构建脚本审批。
 
 **B. 本地路径（开发时用）**
 
 ```sh
-yyzt plugin --profile web add <绝对路径>/backlog-plugin
+dsh plugin --profile web add <绝对路径>/backlog-plugin
 ```
 
 **C. 对话里让 agent 装（创造模式 / cordis 预设）**
@@ -74,7 +74,7 @@ yyzt plugin --profile web add <绝对路径>/backlog-plugin
 用 plugin_manager 的 install_bundle 安装 <绝对路径>/backlog-plugin
 ```
 
-验证：`yyzt --profile web --dump-config` 里应出现 `# == @local/dsh-backlog-browser` 这一层；刷新页面后侧边栏出现 `Backlog.md`。
+验证：`dsh --profile web --dump-config` 里应出现 `# == @local/dsh-backlog-browser` 这一层；刷新页面后侧边栏出现 `Backlog.md`。
 
 ## 配置（可选）
 
@@ -158,7 +158,7 @@ npm version patch          # 或 minor / major，自动改 package.json 并打 t
 git push --follow-tags
 ```
 
-若还想发布到 npm（这样最省事：`yyzt plugin --profile web add dsh-backlog-browser@<version>`）：
+若还想发布到 npm（这样最省事：`dsh plugin --profile web add dsh-backlog-browser@<version>`）：
 
 ```sh
 npm publish --access public
@@ -169,7 +169,7 @@ npm publish --access public
 ## 卸载
 
 ```sh
-yyzt plugin --profile web remove @local/dsh-backlog-browser
+dsh plugin --profile web remove @local/dsh-backlog-browser
 ```
 
 ## 许可证
