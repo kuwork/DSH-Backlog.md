@@ -4,7 +4,7 @@
 
 A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.md) web board into DeepSeek Harness: a sidebar panel, a conversation-view tab, and a session-header menu, each backed by one `backlog browser` process per workspace.
 
-> 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
+> 本插件仓库：[github.com/kuwork/DSH-Backlog.md](https://github.com/kuwork/DSH-Backlog.md) · Backlog.md 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
 
 ![对话区标签页：整块嵌入的 Backlog.md 看板](.github/conversation-tab.jpg)
 
@@ -55,9 +55,9 @@ backlog --version        # 期望 1.53.12-CN
 **A. 从 GitHub（推荐，别人也能装）**
 
 ```sh
-dsh plugin --profile web add github:<你的 GitHub 用户名>/dsh-backlog-browser
+dsh plugin --profile web add github:kuwork/DSH-Backlog.md
 # 锁版本：
-dsh plugin --profile web add github:<你的 GitHub 用户名>/dsh-backlog-browser#v0.1.8
+dsh plugin --profile web add github:kuwork/DSH-Backlog.md#v0.1.8
 ```
 
 本包没有构建步骤，不会触发 pnpm 的构建脚本审批。
@@ -166,7 +166,14 @@ npm publish --access public
 
 注意：`@local/` 这个 scope 只适合本地开发。要公开发布，把 `package.json` 的 `name` 和 `cordis.patch.yml` 里那行的 `name` **同时**改掉，然后重装一次——旧 profile 里的 `link:` 记录指向旧名字，不会自动迁移。
 
-截图放在 `.github/`，GitHub 与仓库页渲染都正常；`files` 里已显式列出 `.github/*.jpg`。若某天发布到 npm 后发现 README 图片不显示，把那两处链接换成 `https://raw.githubusercontent.com/<user>/<repo>/main/.github/...` 的绝对地址即可。
+截图放在 `.github/`，GitHub 与仓库页渲染都正常；`files` 里已显式列出 `.github/*.jpg`。若某天发布到 npm 后发现 README 图片不显示，把那两处链接换成 `https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/...` 的绝对地址即可。
+
+推送到远程（首次）：
+
+```sh
+git remote add origin https://github.com/kuwork/DSH-Backlog.md.git
+git push -u origin main
+```
 
 ## 卸载
 

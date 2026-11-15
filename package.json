@@ -15,11 +15,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kuwork/dsh-backlog-browser.git"
+    "url": "git+https://github.com/kuwork/DSH-Backlog.md.git"
   },
-  "homepage": "https://github.com/kuwork/dsh-backlog-browser#readme",
+  "homepage": "https://github.com/kuwork/DSH-Backlog.md#readme",
   "bugs": {
-    "url": "https://github.com/kuwork/dsh-backlog-browser/issues"
+    "url": "https://github.com/kuwork/DSH-Backlog.md/issues"
   },
   "exports": {
     ".": "./index.js",
