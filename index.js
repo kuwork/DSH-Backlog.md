@@ -42,16 +42,9 @@ export const inject = ['subprocess', 'connection', 'webServer']
  */
 const CHANNEL = '/backlog'
 
-/** Config files `backlog` itself resolves, in its own order (root config wins). */
-const CONFIG_FILES = [
-  'backlog.config.yml',
-  'backlog.config.yaml',
-  'backlog/config.yml',
-  'backlog/config.yaml',
-  '.backlog/config.yml',
-  '.backlog/config.yaml',
-]
-/** Default data folders, used when no config file is found at the expected place. */
+/** Config file names inside a data folder. */
+const CONFIG_FILES = ['config.yml', 'config.yaml']
+/** Data folders a backlog project lives in. Only these count as initialization. */
 const DATA_DIRS = ['backlog', '.backlog']
 /** Entries that mark a folder as a backlog board rather than an unrelated directory. */
 const BOARD_MARKERS = ['config.yml', 'config.yaml', 'tasks', 'completed', 'archive', 'drafts', 'decisions', 'docs', 'milestones']
@@ -231,18 +224,17 @@ async function looksLikeBoard(dir) {
 /**
  * Report which backlog project the workspace already has.
  *
- * `backlog` resolves its project as: root `backlog.config.yml`, then
- * `<data folder>/config.yml`, then built-in defaults. Detection follows that
- * order, and additionally accepts a `backlog/` or `.backlog/` folder that holds
- * a board without a config file, so an initialized workspace is never reported
- * as uninitialized.
+ * Only a `backlog/` or `.backlog/` folder counts: that is where a project's
+ * data lives, and where `backlog init` writes `config.yml`. A root-level
+ * `backlog.config.yml` is deliberately not evidence — it is a config location
+ * `backlog` itself supports, but a stray one does not make the workspace a
+ * backlog project. A folder that carries the board without a config file is
+ * still accepted, so an initialized workspace is never reported as
+ * uninitialized.
  * @param cwd - workspace directory.
  * @returns the detected project path relative to `cwd`, or undefined.
  */
 export async function detectConfig(cwd) {
-  for (const relative of CONFIG_FILES) {
-    if (await isFile(path.join(cwd, relative))) return relative
-  }
   for (const folder of DATA_DIRS) {
     const absolute = path.join(cwd, folder)
     if (!(await isDir(absolute))) continue

@@ -108,13 +108,12 @@ dsh plugin --profile web add <绝对路径>/backlog-plugin
 
 ## 初始化检测规则
 
-`backlog` 自己按这个顺序找项目：根目录 `backlog.config.yml` → `<数据目录>/config.yml` → 内置默认值。插件按同一顺序判断「当前工作区是否已初始化」：
+只认 `backlog/` 或 `.backlog/` 目录——项目的实际数据在那里，`backlog init` 也把 `config.yml` 写进去：
 
-1. 根目录存在 `backlog.config.yml` / `backlog.config.yaml`；
-2. `backlog/` 或 `.backlog/` 下有 `config.yml` / `config.yaml`；
-3. 没有配置文件、但 `backlog/` 或 `.backlog/` 里已经有看板内容（`tasks/`、`completed/`、`archive/`、`drafts/`、`decisions/`、`docs/`、`milestones/` 之一）——目录本身就是证据。
+1. `backlog/` 或 `.backlog/` 下有 `config.yml` / `config.yaml`；
+2. 没有配置文件、但该目录里已经有看板内容（`tasks/`、`completed/`、`archive/`、`drafts/`、`decisions/`、`docs/`、`milestones/` 之一）——目录本身就是证据。
 
-只有目录存在且完全为空时才算「未初始化」。初始化完成后 Host 会再自检一次：`backlog init` 退出码为 0 却没找到配置时，会明确报错并附上 CLI 输出。
+根目录放一个 `backlog.config.yml` **不算**初始化：它是 `backlog` 支持的一种配置位置，但单独存在并不代表这个工作区真的是 backlog 项目。只有目录存在且完全为空时才算「未初始化」。初始化完成后 Host 会再自检一次：`backlog init` 退出码为 0 却没找到配置时，会明确报错并附上 CLI 输出。
 
 ## 主题
 
