@@ -1,10 +1,14 @@
 # Backlog.md Browser
 
+[![npm version](https://img.shields.io/npm/v/dsh-backlog.md?logo=npm&label=npm)](https://www.npmjs.com/package/dsh-backlog.md)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![node](https://img.shields.io/badge/node-%E2%89%A5%2020-339933?logo=node.js&logoColor=white)](https://nodejs.org)
+
 把 [Backlog.md](https://github.com/kuwork/Backlog.md) 的 Web 看板嵌进 **DeepSeek Harness**：侧边栏多一个 `Backlog.md` 面板，对话区多一个 `Backlog.md` 标签页，服务按工作区独立启停。
 
 A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.md) web board into DeepSeek Harness: a sidebar panel, a conversation-view tab, and a session-header menu, each backed by one `backlog browser` process per workspace.
 
-> 本插件仓库：[github.com/kuwork/DSH-Backlog.md](https://github.com/kuwork/DSH-Backlog.md) · Backlog.md 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
+> 已发布到 npm：[dsh-backlog.md](https://www.npmjs.com/package/dsh-backlog.md) · 本插件仓库：[github.com/kuwork/DSH-Backlog.md](https://github.com/kuwork/DSH-Backlog.md) · Backlog.md 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
 
 ![对话区标签页：整块嵌入的 Backlog.md 看板](.github/conversation-tab.jpg)
 
@@ -57,6 +61,8 @@ backlog --version        # 期望 1.53.12-CN
 ```sh
 dsh plugin --profile web add dsh-backlog.md
 ```
+
+npm 页：[dsh-backlog.md](https://www.npmjs.com/package/dsh-backlog.md)。新版本由 CI 在推送 `v*.*.*` 标签时发布；需要固定版本就写 `dsh-backlog.md@0.1.9`。
 
 **B. 从 GitHub**
 
