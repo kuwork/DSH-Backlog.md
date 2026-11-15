@@ -15,7 +15,7 @@
  * the two halves talk over a plain JSON route instead of an RPC envelope.
  */
 window.__ModuleLoader__.load({
-  id: '@local/dsh-backlog-browser',
+  id: 'dsh-backlog.md',
   factory(require) {
     const React = require('react')
     const h = React.createElement

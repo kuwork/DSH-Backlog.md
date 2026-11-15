@@ -1,4 +1,4 @@
-# Bundle layer for @local/dsh-backlog-browser.
+# Bundle layer for dsh-backlog.md.
 #
 # One Host row only: the Client half is assembled from package.json `dsh.client`
 # plus the `./client` export, so it needs no row of its own.
@@ -10,7 +10,7 @@
 #   readyTimeoutMs   readiness budget per attempt (default 90000)
 - insert:
     - id: backlog-browser
-      name: '@local/dsh-backlog-browser'
+      name: 'dsh-backlog.md'
       config:
         basePort: 6420
         portTries: 20

@@ -72,7 +72,7 @@ dsh plugin --profile web add <绝对路径>/backlog-plugin
 用 plugin_manager 的 install_bundle 安装 <绝对路径>/backlog-plugin
 ```
 
-验证：`dsh --profile web --dump-config` 里应出现 `# == @local/dsh-backlog-browser` 这一层；刷新页面后侧边栏出现 `Backlog.md`。
+验证：`dsh --profile web --dump-config` 里应出现 `# == dsh-backlog.md` 这一层；刷新页面后侧边栏出现 `Backlog.md`。
 
 ## 配置（可选）
 
@@ -80,7 +80,7 @@ dsh plugin --profile web add <绝对路径>/backlog-plugin
 
 ```yaml
 - id: backlog-browser
-  name: '@local/dsh-backlog-browser'
+  name: 'dsh-backlog.md'
   config:
     executablePath: 'C:\Users\you\AppData\Roaming\npm\node_modules\@kuwork\backlog.md\cli.js'
     basePort: 6420

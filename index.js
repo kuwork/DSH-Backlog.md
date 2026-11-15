@@ -24,7 +24,7 @@ import { promises as fsp } from 'node:fs'
 import net from 'node:net'
 import path from 'node:path'
 
-export const name = 'dsh-backlog-browser'
+export const name = 'dsh-backlog.md'
 
 /**
  * Services this plugin needs before `apply` runs. `webServer` hosts the channel's

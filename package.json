@@ -1,5 +1,5 @@
 {
-  "name": "@local/dsh-backlog-browser",
+  "name": "dsh-backlog.md",
   "version": "0.1.9",
   "type": "module",
   "description": "Backlog.md Browser integration for DeepSeek Harness: a Conversation view tab backed by a per-workspace `backlog browser` process.",
