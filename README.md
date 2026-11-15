@@ -1,8 +1,10 @@
 # Backlog.md Browser
 
-把 [Backlog.md](https://kuwork.github.io/Backlog.md/) 的 Web 看板嵌进 **岩语智图 / DeepSeek Harness**：侧边栏多一个 `Backlog.md` 面板，对话区多一个 `Backlog.md` 标签页，服务按工作区独立启停。
+把 [Backlog.md](https://github.com/kuwork/Backlog.md) 的 Web 看板嵌进 **岩语智图 / DeepSeek Harness**：侧边栏多一个 `Backlog.md` 面板，对话区多一个 `Backlog.md` 标签页，服务按工作区独立启停。
 
-A bundle plugin that embeds the [Backlog.md](https://kuwork.github.io/Backlog.md/) web board into DeepSeek Harness (Yanyu Zhitu): a sidebar panel, a conversation-view tab, and a session-header menu, each backed by one `backlog browser` process per workspace.
+A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.md) web board into DeepSeek Harness (Yanyu Zhitu): a sidebar panel, a conversation-view tab, and a session-header menu, each backed by one `backlog browser` process per workspace.
+
+> 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
 
 ![对话区标签页：整块嵌入的 Backlog.md 看板](docs/conversation-tab.jpg)
 
@@ -11,6 +13,17 @@ A bundle plugin that embeds the [Backlog.md](https://kuwork.github.io/Backlog.md
 ![侧边栏面板：工作区选择器、状态点与服务地址](docs/sidebar-panel.jpg)
 
 *侧边栏 `Backlog.md` 面板。下拉里每个工作区一行两栏：状态点 + 名称，第二行是服务地址（`127.0.0.1:6486`），没有配置的显示「未初始化」。面板不依赖会话，冷启动就能启动看板。*
+
+## 关于 Backlog.md
+
+[Backlog.md](https://github.com/kuwork/Backlog.md) 是**Git 原生的 AI 任务管理器**：任务、验收标准、实施计划与执行记录全部以 Markdown 文件存在你自己的仓库里，AI Agent（Claude Code、Codex、Gemini CLI 等）通过 CLI / MCP 领任务并推进，人类在**任务描述、实施计划、交付结果**三个节点审查放行。
+
+- **Markdown Native**：一个任务就是一个 `.md` 文件，没有专有数据库，可被 `git diff` / review / 归档；
+- **Git Native**：`backlog/`（tasks / docs / decisions / wiki）与代码同仓版本化；
+- **Local & Offline First**：数据在本地，不需要云端账号或订阅；
+- **自带看板**：`backlog browser` 起一个本地 Web UI——本插件就是把它嵌进 Harness 的第三个标签页与侧边栏。
+
+官网与文档：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/)。本插件不修改 Backlog.md，只是它的宿主 UI。
 
 ## 三个入口
 
@@ -23,6 +36,8 @@ A bundle plugin that embeds the [Backlog.md](https://kuwork.github.io/Backlog.md
 还有 `backlog init` 的初始化弹窗：项目名、backlog 目录、配置位置、任务 ID 前缀、AI 集成方式、写入的指令文件、Git 开关，提交后在**当前工作区**执行。
 
 ## 前置条件
+
+本插件只负责「嵌 UI + 管进程」，`backlog` CLI 需要单独安装。安装方式与完整文档见 [Backlog.md 仓库](https://github.com/kuwork/Backlog.md) / [官网](https://kuwork.github.io/Backlog.md/)：
 
 ```sh
 npm i -g @kuwork/backlog.md@1.53.12-CN
