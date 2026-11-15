@@ -148,37 +148,3 @@ locale/*.json     中英文词典
 icon.svg          插件图标
 .github/*.jpg     README 用的界面截图
 ```
-
-## 维护者：发布与发版
-
-```sh
-npm version patch          # 或 minor / major，自动改 package.json 并打 tag
-git push --follow-tags
-```
-
-若还想发布到 npm（这样最省事：`dsh plugin --profile web add dsh-backlog-browser`）：
-
-```sh
-npm publish --access public
-```
-
-注意：`@local/` 这个 scope 只适合本地开发。要公开发布，把 `package.json` 的 `name` 和 `cordis.patch.yml` 里那行的 `name` **同时**改掉，然后重装一次——旧 profile 里的 `link:` 记录指向旧名字，不会自动迁移。
-
-截图放在 `.github/`，GitHub 与仓库页渲染都正常；`files` 里已显式列出 `.github/*.jpg`。若某天发布到 npm 后发现 README 图片不显示，把那两处链接换成 `https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/...` 的绝对地址即可。
-
-推送到远程（首次）：
-
-```sh
-git remote add origin https://github.com/kuwork/DSH-Backlog.md.git
-git push -u origin main
-```
-
-## 卸载
-
-```sh
-dsh plugin --profile web remove @local/dsh-backlog-browser
-```
-
-## 许可证
-
-[MIT](LICENSE)
