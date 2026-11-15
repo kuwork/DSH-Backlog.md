@@ -131,6 +131,8 @@ async function resolveCommand(ctx, config, cwd) {
   if (process.platform === 'win32' && typeof process.env.APPDATA === 'string') {
     candidates.push(path.join(process.env.APPDATA, 'npm', 'node_modules', '@kuwork', 'backlog.md', 'cli.js'))
   }
+  // The npm that ships with the running Node keeps globals next to node.exe.
+  candidates.push(path.join(path.dirname(process.execPath), 'node_modules', '@kuwork', 'backlog.md', 'cli.js'))
   candidates.push(path.join(cwd, 'node_modules', '@kuwork', 'backlog.md', 'cli.js'))
 
   let resolved
@@ -157,6 +159,68 @@ async function resolveCommand(ctx, config, cwd) {
     new Error('找不到 backlog 命令。请先执行 npm i -g @kuwork/backlog.md，或在插件配置里设置 executablePath。'),
     { code: 'backlog/not-installed' },
   )
+}
+
+/**
+ * The global install in flight, so two workspaces starting at once do not run
+ * npm twice.
+ */
+let cliInstall
+
+/**
+ * Install `@kuwork/backlog.md` globally with the npm that ships next to the
+ * running Node binary.
+ *
+ * The CLI is deliberately not a dependency of this plugin: its platform
+ * binaries are hundreds of megabytes and a profile should not carry a second
+ * copy of a tool the user may already have installed.
+ * @param ctx - host context.
+ * @returns whether the install exited zero, plus its log.
+ */
+async function installCli(ctx) {
+  const npmCli = path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js')
+  if (!(await isFile(npmCli))) {
+    return { ok: false, log: `找不到 npm：${npmCli}` }
+  }
+  try {
+    const handle = ctx.subprocess.spawn({
+      argv: [process.execPath, npmCli, 'install', '--global', '@kuwork/backlog.md'],
+      cwd: path.dirname(npmCli),
+      stdio: { stdin: 'ignore', stdout: { maxBytes: 65_536 }, stderr: { maxBytes: 65_536 } },
+      graceMs: 5_000,
+      env: { NO_COLOR: '1' },
+    })
+    const outcome = await handle.done
+    const stdout = handle.collected.stdout?.readFrom(0).text ?? ''
+    const stderr = handle.collected.stderr?.readFrom(0).text ?? ''
+    return { ok: outcome.exitCode === 0, log: `${stdout}${stderr}`.replace(ANSI_ESCAPE, '').trim() }
+  } catch (error) {
+    return { ok: false, log: error instanceof Error ? error.message : String(error) }
+  }
+}
+
+/**
+ * Resolve the CLI, installing it once when the machine has none.
+ * @param ctx - host context.
+ * @param config - the bundle row's config (`executablePath`, `autoInstall`).
+ * @param cwd - workspace directory.
+ * @returns argv prefix that runs the CLI.
+ */
+async function resolveOrInstall(ctx, config, cwd) {
+  try {
+    return await resolveCommand(ctx, config, cwd)
+  } catch (error) {
+    if (error?.code !== 'backlog/not-installed' || config?.autoInstall === false) throw error
+    cliInstall ??= installCli(ctx).finally(() => { cliInstall = undefined })
+    const result = await cliInstall
+    if (!result.ok) {
+      throw Object.assign(
+        new Error(`本机没有 backlog 命令，自动安装也失败了：${result.log || '无输出'}`),
+        { code: 'backlog/not-installed' },
+      )
+    }
+    return await resolveCommand(ctx, config, cwd)
+  }
 }
 
 /**
@@ -470,7 +534,7 @@ async function startWorkspace(ctx, config, cwd) {
   if (pending !== undefined) return pending
 
   const run = (async () => {
-    const argvPrefix = await resolveCommand(ctx, config, cwd)
+    const argvPrefix = await resolveOrInstall(ctx, config, cwd)
     const basePort = Number.isInteger(config?.basePort) ? config.basePort : 6420
     const tries = Number.isInteger(config?.portTries) ? config.portTries : DEFAULT_PORT_TRIES
     const timeout = Number.isInteger(config?.readyTimeoutMs) ? config.readyTimeoutMs : READY_TIMEOUT_MS
@@ -541,7 +605,7 @@ async function stopWorkspace(ctx, config, cwd) {
  * @returns inspect payload plus the CLI output.
  */
 async function initWorkspace(ctx, config, cwd, options) {
-  const argvPrefix = await resolveCommand(ctx, config, cwd)
+  const argvPrefix = await resolveOrInstall(ctx, config, cwd)
   const argv = [...argvPrefix, 'init']
   const projectName = typeof options?.projectName === 'string' && options.projectName.trim().length > 0
     ? options.projectName.trim()

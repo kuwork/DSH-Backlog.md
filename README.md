@@ -41,16 +41,18 @@ A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.m
 
 ## 前置条件
 
-本插件只负责「嵌 UI + 管进程」，`backlog` CLI 需要单独安装。安装方式与完整文档见 [Backlog.md 仓库](https://github.com/kuwork/Backlog.md) / [官网](https://kuwork.github.io/Backlog.md/)：
+**不需要手动安装 `backlog` CLI**：首次启动看板时，如果本机找不到它，插件会自动执行一次全局安装（`npm install --global @kuwork/backlog.md`，约两百多 MB，随后缓存复用），装完继续启动。只有想自己控制版本、或者机器上禁止全局安装时，才需要手动装：
 
 ```sh
-npm i -g @kuwork/backlog.md@1.53.12-CN
-backlog --version        # 期望 1.53.12-CN
+npm i -g @kuwork/backlog.md
+backlog --version
 ```
 
-> 已知坑：`@kuwork/backlog.md` 通过平台专属 optionalDependency 分发原生二进制。若版本自报与二进制不一致（表现为 `backlog browser` 启动后立刻退出、无输出），用 `npm i -g @kuwork/backlog.md@1.53.12-CN --force` 重装，并确认
+完整文档见 [Backlog.md 仓库](https://github.com/kuwork/Backlog.md) / [官网](https://kuwork.github.io/Backlog.md/)。
+
+> 已知坑：`@kuwork/backlog.md` 通过平台专属 optionalDependency 分发原生二进制。若版本自报与二进制不一致（表现为 `backlog browser` 启动后立刻退出、无输出），用 `npm i -g @kuwork/backlog.md --force` 重装，并确认
 > `%APPDATA%\npm\node_modules\@kuwork\backlog.md-windows-x64\package.json` 的 version 与 CLI 一致。
-> 插件找不到 `backlog` 时会在结果里明确报错，不会静默失败。
+> 自动安装失败、或想禁用它，见下面的 `autoInstall`；插件找不到 `backlog` 时会在结果里明确报错，不会静默失败。
 
 ## 安装
 
@@ -88,13 +90,14 @@ dsh plugin --profile web add <绝对路径>/backlog-plugin
 
 ## 配置（可选）
 
-在 profile 的 `cordis.patch.yml` 里覆盖该行的 `config`（**整行替换**，四个键要一起给）：
+在 profile 的 `cordis.patch.yml` 里覆盖该行的 `config`（**整行替换**，五个键要一起给）：
 
 ```yaml
 - id: backlog-browser
   name: 'dsh-backlog.md'
   config:
     executablePath: 'C:\Users\you\AppData\Roaming\npm\node_modules\@kuwork\backlog.md\cli.js'
+    autoInstall: true
     basePort: 6420
     portTries: 20
     readyTimeoutMs: 90000
@@ -103,6 +106,7 @@ dsh plugin --profile web add <绝对路径>/backlog-plugin
 | 键 | 默认 | 说明 |
 |---|---|---|
 | `executablePath` | 自动解析 | `backlog` 可执行文件或 `cli.js` 的绝对路径；不填时从 PATH 解析，并把 `.cmd` shim 还原成 `node <cli.js>` |
+| `autoInstall` | `true` | 首次启动时若找不到 `backlog`，自动 `npm install --global @kuwork/backlog.md` 一次；设为 `false` 则直接报错，由你自己装 |
 | `basePort` | `6420` | 端口窗基址 |
 | `portTries` | `20` | 依次尝试的端口数，全占用后改用系统临时端口 |
 | `readyTimeoutMs` | `90000` | 单次启动的就绪等待预算（首次冷启动要扫全仓库，较慢） |
