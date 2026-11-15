@@ -6,11 +6,11 @@ A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.m
 
 > 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
 
-![对话区标签页：整块嵌入的 Backlog.md 看板](docs/conversation-tab.jpg)
+![对话区标签页：整块嵌入的 Backlog.md 看板](.github/conversation-tab.jpg)
 
 *对话区第三个标签页（对话 / 轨迹 / **Backlog.md**）。看板吃满整个高度，不占顶部空间；侧边栏是同一插件的入口。*
 
-![侧边栏面板：工作区选择器、状态点与服务地址](docs/sidebar-panel.jpg)
+![侧边栏面板：工作区选择器、状态点与服务地址](.github/sidebar-panel.jpg)
 
 *侧边栏 `Backlog.md` 面板。下拉里每个工作区一行两栏：状态点 + 名称，第二行是服务地址（`127.0.0.1:6486`），没有配置的显示「未初始化」。面板不依赖会话，冷启动就能启动看板。*
 
@@ -148,7 +148,7 @@ client.js         Client 半边：标签页、会话头菜单、侧边栏面板�
 cordis.patch.yml  组合包补丁：向 profile 插入 backlog-browser 行
 locale/*.json     中英文词典
 icon.svg          插件图标
-docs/*.jpg        README 用的界面截图
+.github/*.jpg     README 用的界面截图
 ```
 
 ## 维护者：发布与发版
@@ -165,6 +165,8 @@ npm publish --access public
 ```
 
 注意：`@local/` 这个 scope 只适合本地开发。要公开发布，把 `package.json` 的 `name` 和 `cordis.patch.yml` 里那行的 `name` **同时**改掉，然后重装一次——旧 profile 里的 `link:` 记录指向旧名字，不会自动迁移。
+
+截图放在 `.github/`，GitHub 与仓库页渲染都正常；`files` 里已显式列出 `.github/*.jpg`。若某天发布到 npm 后发现 README 图片不显示，把那两处链接换成 `https://raw.githubusercontent.com/<user>/<repo>/main/.github/...` 的绝对地址即可。
 
 ## 卸载
 

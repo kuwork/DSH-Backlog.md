@@ -33,7 +33,7 @@
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg",
-    "docs/*.jpg",
+    ".github/*.jpg",
     "README.md",
     "LICENSE"
   ],
