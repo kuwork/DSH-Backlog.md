@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Backlog.md Browser",
+    "description": "Adds a Backlog view tab and per-workspace control of the `backlog browser` server."
+  }
+}

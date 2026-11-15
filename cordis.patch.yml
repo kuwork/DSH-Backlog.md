@@ -1,0 +1,17 @@
+# Bundle layer for @local/dsh-backlog-browser.
+#
+# One Host row only: the Client half is assembled from package.json `dsh.client`
+# plus the `./client` export, so it needs no row of its own.
+#
+# Row config (all optional):
+#   executablePath   absolute path to a `backlog` executable or cli.js
+#   basePort         preferred port window base (default 6420)
+#   portTries        candidate ports tried before an ephemeral port (default 20)
+#   readyTimeoutMs   readiness budget per attempt (default 90000)
+- insert:
+    - id: backlog-browser
+      name: '@local/dsh-backlog-browser'
+      config:
+        basePort: 6420
+        portTries: 20
+        readyTimeoutMs: 90000

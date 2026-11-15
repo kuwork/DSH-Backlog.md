@@ -1,0 +1,55 @@
+{
+  "name": "@local/dsh-backlog-browser",
+  "version": "0.1.8",
+  "type": "module",
+  "description": "Backlog.md Browser integration for DeepSeek Harness: a Conversation view tab backed by a per-workspace `backlog browser` process.",
+  "license": "MIT",
+  "author": "kuwork",
+  "keywords": [
+    "dsh-plugin",
+    "dsh-bundle",
+    "deepseek-harness",
+    "backlog",
+    "backlog.md",
+    "kanban"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuwork/dsh-backlog-browser.git"
+  },
+  "homepage": "https://github.com/kuwork/dsh-backlog-browser#readme",
+  "bugs": {
+    "url": "https://github.com/kuwork/dsh-backlog-browser/issues"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "dsh": ">=0.2.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}

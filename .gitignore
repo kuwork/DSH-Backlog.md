@@ -1,0 +1,19 @@
+# Dependencies (this package has none, but a local pnpm/npm run may create these)
+node_modules/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Harness/profile artifacts
+.dsh/
+.plugin-manager/
+
+# Local scratch: the plugin's own probes and captured CLI output
+.tmp*
+*.log
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
