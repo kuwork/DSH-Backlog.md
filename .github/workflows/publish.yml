@@ -43,13 +43,17 @@ jobs:
       - name: Show the tarball contents
         run: npm pack --dry-run
 
-      # Token-based publishing. To switch to npm trusted publishing instead,
-      # configure the package's trusted publisher on npmjs.com, delete the env
-      # block below, and keep `--provenance`.
+      # Trusted publishing: npm exchanges this job's OIDC token for a one-shot
+      # publish credential, so the repository holds no npm secret. The package's
+      # trusted publisher is kuwork/DSH-Backlog.md + this filename, and the job
+      # needs `id-token: write` above. npm >= 11.5.1 is required, hence the pin.
+      - name: Pin npm for trusted publishing
+        run: |
+          npm install -g npm@11.21.0
+          npm --version
+
       - name: Publish to npm
         run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create the GitHub release
         env:
