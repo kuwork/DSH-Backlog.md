@@ -56,8 +56,6 @@ backlog --version        # 期望 1.53.12-CN
 
 ```sh
 dsh plugin --profile web add github:kuwork/DSH-Backlog.md
-# 锁版本：
-dsh plugin --profile web add github:kuwork/DSH-Backlog.md#v0.1.8
 ```
 
 本包没有构建步骤，不会触发 pnpm 的构建脚本审批。
@@ -158,7 +156,7 @@ npm version patch          # 或 minor / major，自动改 package.json 并打 t
 git push --follow-tags
 ```
 
-若还想发布到 npm（这样最省事：`dsh plugin --profile web add dsh-backlog-browser@<version>`）：
+若还想发布到 npm（这样最省事：`dsh plugin --profile web add dsh-backlog-browser`）：
 
 ```sh
 npm publish --access public
