@@ -62,7 +62,7 @@ backlog --version        # 期望 1.53.12-CN
 dsh plugin --profile web add dsh-backlog.md
 ```
 
-npm 页：[dsh-backlog.md](https://www.npmjs.com/package/dsh-backlog.md)。新版本由 CI 在推送 `v*.*.*` 标签时发布；需要固定版本就写 `dsh-backlog.md@0.1.9`。
+npm 页：[dsh-backlog.md](https://www.npmjs.com/package/dsh-backlog.md)。发版以标签为准：推送 `v*.*.*` 标签后，CI 按标签写版本号、发布到 npm，并把 `package.json` 同步回 `main`。需要固定版本就写 `dsh-backlog.md@0.1.9`。
 
 **B. 从 GitHub**
 
