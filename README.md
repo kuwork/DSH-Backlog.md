@@ -50,9 +50,15 @@ backlog --version        # 期望 1.53.12-CN
 
 ## 安装
 
-装完刷新页面。三选一：
+装完刷新页面。四选一：
 
-**A. 从 GitHub（推荐，别人也能装）**
+**A. 从 npm（最简单）**
+
+```sh
+dsh plugin --profile web add dsh-backlog.md
+```
+
+**B. 从 GitHub**
 
 ```sh
 dsh plugin --profile web add github:kuwork/DSH-Backlog.md
@@ -60,13 +66,13 @@ dsh plugin --profile web add github:kuwork/DSH-Backlog.md
 
 本包没有构建步骤，不会触发 pnpm 的构建脚本审批。
 
-**B. 本地路径（开发时用）**
+**C. 本地路径（开发时用）**
 
 ```sh
 dsh plugin --profile web add <绝对路径>/backlog-plugin
 ```
 
-**C. 对话里让 agent 装（创造模式 / cordis 预设）**
+**D. 对话里让 agent 装（创造模式 / cordis 预设）**
 
 ```
 用 plugin_manager 的 install_bundle 安装 <绝对路径>/backlog-plugin
