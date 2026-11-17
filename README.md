@@ -1,13 +1,4 @@
-<p align="center">
-  <a href="https://github.com/deepseek-ai/deepseek-harness">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/deepseek-harness-dark.svg" />
-      <img src=".github/deepseek-harness-light.svg" alt="DeepSeek Harness" width="240" />
-    </picture>
-  </a>
-</p>
-
-# Backlog.md Browser
+![dsh-backlog.md：把 Backlog.md 看板嵌进 DeepSeek Harness](.github/banner.png)
 
 [![npm version](https://img.shields.io/npm/v/dsh-backlog.md?logo=npm&label=npm)](https://www.npmjs.com/package/dsh-backlog.md)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -190,5 +181,5 @@ client.js         Client 半边：标签页、会话头菜单、侧边栏面板�
 cordis.patch.yml  组合包补丁：向 profile 插入 backlog-browser 行
 locale/*.json     中英文词典
 icon.svg          插件图标
-.github/*.jpg     README 用的界面截图
+.github/*.jpg     README 用的推广图与界面截图
 ```

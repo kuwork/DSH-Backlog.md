@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>dsh-backlog.md · banner</title>
+<!--
+  1200 × 620 的推广图（README 顶部）。
+  导出带透明圆角的 PNG（body 透明，靠 Chrome 的透明底色截图）：
+    chrome --headless=new --default-background-color=00000000 \
+           --force-device-scale-factor=2 --window-size=1200,620 \
+           --screenshot=banner.png "file:///<绝对路径>/.github/banner.html"
+  文案、配色都在下面的 :root 与 <body> 里改。
+-->
+<style>
+  :root {
+    --ink: #f2f7ff;
+    --lead: #a8bdd6;
+    --dim: #7f95b0;
+
+    --teal: #00c4cc;
+    --blue: #3f8cff;
+    --green: #34d399;
+    --amber: #f5a524;
+    --violet: #a78bfa;
+    --slate: #64748b;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background: transparent;   /* 导出带透明圆角的 PNG 用；浏览器里看是白底 */
+    font-family: "Segoe UI Variable Display", "Segoe UI", Inter, system-ui, "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* ---------- 卡片 ---------- */
+  .card {
+    position: relative;
+    width: 1200px;
+    height: 620px;
+    overflow: hidden;
+    border-radius: 24px;
+    background:
+      radial-gradient(900px 520px at 6% -12%, #17456f 0%, rgba(23, 69, 111, 0) 62%),
+      radial-gradient(760px 520px at 96% 112%, #0a3c40 0%, rgba(10, 60, 64, 0) 58%),
+      linear-gradient(158deg, #0e2542 0%, #0a1729 52%, #060f1a 100%);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, .055);
+  }
+  /* 淡淡的网格，往右下方淡出 */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, .05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, .05) 1px, transparent 1px);
+    background-size: 46px 46px;
+    -webkit-mask-image: radial-gradient(760px 480px at 82% 42%, #000 0%, transparent 76%);
+            mask-image: radial-gradient(760px 480px at 82% 42%, #000 0%, transparent 76%);
+    opacity: .5;
+  }
+  /* 顶部一道高光 */
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .35), transparent);
+  }
+
+  .inner {
+    position: relative;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 520px 1fr;
+    gap: 52px;
+    align-items: center;
+    padding: 54px 40px 50px 56px;
+  }
+
+  /* ---------- 左侧文案 ---------- */
+  .brand {
+    display: block;
+    width: 176px;
+    height: auto;
+  }
+
+  h1 {
+    margin: 26px 0 0;
+    font-size: 58px;
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -.028em;
+    color: var(--ink);
+  }
+  h1 span { color: #8fe9ee; }
+
+  .lead {
+    margin: 18px 0 0;
+    max-width: 500px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--lead);
+    letter-spacing: .005em;
+  }
+  .lead b { color: #e7f0fb; font-weight: 600; }
+
+  /* ---------- 状态条（对应看板列） ---------- */
+  .legend {
+    margin-top: 26px;
+    width: 100%;
+    max-width: 452px;
+  }
+  .bar {
+    display: flex;
+    gap: 4px;
+    height: 8px;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .bar i { border-radius: 3px; }
+  .bar .todo   { flex: 30; background: linear-gradient(180deg, #6ba0ff, #3f8cff); }
+  .bar .doing  { flex: 10; background: linear-gradient(180deg, #ffc65c, #f5a524); }
+  .bar .done   { flex: 42; background: linear-gradient(180deg, #5ee5b0, #34d399); }
+  .bar .draft  { flex: 18; background: linear-gradient(180deg, #c0a8ff, #a78bfa); }
+
+  .legend .labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: .02em;
+  }
+  .legend .labels span { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .legend .labels span::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .labels .l-todo  { color: #79a9ff; }
+  .labels .l-doing { color: #f7b545; }
+  .labels .l-done  { color: #4bdfa9; }
+  .labels .l-draft { color: #b395fb; }
+
+  /* ---------- 功能胶囊 ---------- */
+  .pills {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 26px;
+    max-width: 520px;
+  }
+  .pills .row { display: flex; gap: 8px; }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 17px;
+    border-radius: 999px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: #d9e7fa;
+    border: 1px solid rgba(255, 255, 255, .15);
+    background: rgba(255, 255, 255, .035);
+    white-space: nowrap;
+  }
+  .pill svg { width: 14px; height: 14px; opacity: .9; }
+  .pill.primary {
+    border: 0;
+    color: #fff;
+    background: linear-gradient(140deg, #4a92ff 0%, #2f6cf0 100%);
+    box-shadow: 0 10px 22px rgba(47, 108, 240, .32), inset 0 1px 0 rgba(255, 255, 255, .25);
+  }
+  .pill.primary svg { opacity: 1; }
+  .pill.sm {
+    height: 32px;
+    padding: 0 12px;
+    gap: 6px;
+    font-size: 12px;
+    border-radius: 999px;
+  }
+  .pill.sm svg { width: 12px; height: 12px; }
+
+  .note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 22px 0 0;
+    font-size: 12px;
+    letter-spacing: .01em;
+    color: #7288a3;
+  }
+  .note::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 0 3px rgba(0, 196, 204, .15);
+  }
+
+  /* ---------- 右侧截图 ---------- */
+  .stage {
+    position: relative;
+    justify-self: stretch;
+    align-self: center;
+    width: 100%;
+    height: 344px;
+  }
+  .stage::before {
+    content: "";
+    position: absolute;
+    inset: -70px -60px -70px -40px;
+    background: radial-gradient(closest-side, rgba(0, 196, 204, .22), rgba(0, 196, 204, 0) 72%);
+    filter: blur(6px);
+    z-index: 0;
+  }
+  .window {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0b1220;
+    border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow:
+      0 28px 64px rgba(0, 0, 0, .6),
+      0 2px 0 rgba(255, 255, 255, .06) inset;
+  }
+  .win-bar {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    background: linear-gradient(180deg, #131f32, #0c1626);
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #febc2e; }
+  .dot.g { background: #28c840; }
+  .url {
+    margin-left: 10px;
+    padding: 3px 11px;
+    border-radius: 7px;
+    font-size: 10.5px;
+    letter-spacing: .01em;
+    color: #89a0bb;
+    background: rgba(255, 255, 255, .055);
+    border: 1px solid rgba(255, 255, 255, .06);
+  }
+  .shot {
+    width: 100%;
+    height: 312px;
+    overflow: hidden;
+    background-color: #101828;   /* 与截图画布同色，补掉底边几像素 */
+    background-image: url("banner-graph.png");
+    background-repeat: no-repeat;
+    /* 原图 1860×848：缩放 36%，图谱右缘留出约 10px 余量 */
+    background-size: 670px auto;
+    background-position: 0 0;
+  }
+
+  /* 悬浮状态条 */
+  .chip {
+    position: absolute;
+    right: 18px;
+    bottom: -18px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    height: 36px;
+    padding: 0 15px;
+    border-radius: 11px;
+    background: rgba(8, 16, 27, .94);
+    border: 1px solid rgba(255, 255, 255, .13);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .55);
+    font-size: 11.5px;
+    letter-spacing: .01em;
+    color: #c3d5ea;
+    backdrop-filter: blur(6px);
+  }
+  .chip .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 3px rgba(52, 211, 153, .18);
+  }
+  .chip b { color: #eaf2fd; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="inner">
+      <div class="copy">
+        <img class="brand" src="deepseek-harness-dark.svg" alt="DeepSeek Harness" />
+
+        <h1>dsh-<span>backlog.md</span></h1>
+
+        <p class="lead">
+          把 Backlog.md <b>看板</b>嵌进 DeepSeek Harness。<br />
+          侧边栏常驻入口，对话区独立标签页，按工作区启停。
+        </p>
+
+        <div class="legend">
+          <div class="bar">
+            <i class="todo"></i><i class="doing"></i><i class="done"></i><i class="draft"></i>
+          </div>
+          <div class="labels">
+            <span class="l-todo">To Do</span>
+            <span class="l-doing">In Progress</span>
+            <span class="l-done">Done</span>
+            <span class="l-draft">Draft</span>
+          </div>
+        </div>
+
+        <div class="pills">
+          <div class="row">
+            <span class="pill primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+              侧边栏常驻入口
+            </span>
+            <span class="pill primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="7" height="16" rx="1.6"/><rect x="14" y="4" width="7" height="10" rx="1.6"/></svg>
+              对话区标签页
+            </span>
+          </div>
+
+          <div class="row">
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10M15 10v10"/></svg>
+              看板
+            </span>
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h10M4 12h16M4 18h7"/><path d="M17 4v4M20 10v4M14 16v4"/></svg>
+              甘特图
+            </span>
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="7" r="2.4"/><circle cx="18" cy="7" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M6 9.4v2.2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9.4M12 13.6v2"/></svg>
+              任务图谱
+            </span>
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V11"/><path d="M10 20V5"/><path d="M16 20v-6"/><path d="M22 20H2"/></svg>
+              统计
+            </span>
+          </div>
+
+          <div class="row">
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><path d="M10.3 7 6.6 16.3M13.7 7l3.7 9.3M7.2 18.5h9.6"/></svg>
+              知识图谱
+            </span>
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6.6C10.5 5.1 8 4.5 5 4.5V19c3 0 5.5.6 7 2.1 1.5-1.5 4-2.1 7-2.1V4.5c-3 0-5.5.6-7 2.1z"/><path d="M12 6.6V21"/></svg>
+              LLM Wiki
+            </span>
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3.5" width="16" height="17" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+              Memos
+            </span>
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9.5 10 12l-3 2.5M13 15h4"/></svg>
+              Live Query
+            </span>
+          </div>
+
+          <div class="row">
+            <span class="pill sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V5M4 20h17"/><path d="M7 15.5 11 10l3.2 3.2L20 6"/></svg>
+              ECharts/Mermaid
+            </span>
+          </div>
+        </div>
+
+        <p class="note">首次启动自动安装 backlog CLI，任务数据留在工作区的 backlog/ 目录</p>
+      </div>
+
+      <div class="stage">
+        <div class="window">
+          <div class="win-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="url">127.0.0.1:6420</span>
+          </div>
+          <div class="shot"></div>
+        </div>
+        <div class="chip"><span class="pulse"></span>backlog browser · <b>127.0.0.1:6420</b></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
