@@ -1,3 +1,12 @@
+<p align="center">
+  <a href="https://github.com/deepseek-ai/deepseek-harness">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset=".github/deepseek-harness-dark.svg" />
+      <img src=".github/deepseek-harness-light.svg" alt="DeepSeek Harness" width="240" />
+    </picture>
+  </a>
+</p>
+
 # Backlog.md Browser
 
 [![npm version](https://img.shields.io/npm/v/dsh-backlog.md?logo=npm&label=npm)](https://www.npmjs.com/package/dsh-backlog.md)
@@ -10,13 +19,33 @@ A bundle plugin that embeds the [Backlog.md](https://github.com/kuwork/Backlog.m
 
 > 已发布到 npm：[dsh-backlog.md](https://www.npmjs.com/package/dsh-backlog.md) · 本插件仓库：[github.com/kuwork/DSH-Backlog.md](https://github.com/kuwork/DSH-Backlog.md) · Backlog.md 仓库：[github.com/kuwork/Backlog.md](https://github.com/kuwork/Backlog.md) · 官网：[kuwork.github.io/Backlog.md](https://kuwork.github.io/Backlog.md/) · 安装 CLI：`npm i -g @kuwork/backlog.md`
 
-![对话区标签页：整块嵌入的 Backlog.md 看板](.github/conversation-tab.jpg)
+## 快速安装
 
-*对话区第三个标签页（对话 / 轨迹 / **Backlog.md**）。看板吃满整个高度，不占顶部空间；侧边栏是同一插件的入口。*
+一行命令装好，刷新 DeepSeek Harness 页面即可：
+
+```sh
+dsh plugin --profile web add dsh-backlog.md
+```
+
+`backlog` CLI 会在首次启动时自动安装，无需手动准备。其它安装方式见下方[安装](#安装)。
+
+也能在界面里装：打开 `插件` 页面 → 右上角 `+ 添加插件` → 输入包名 `dsh-backlog.md` → 点「安装」，装完刷新页面。
+
+![插件页的「添加插件」入口：输入包名后点安装](.github/plugin-install.jpg)
+
+*界面安装入口：`插件` 页右上角的 `+ 添加插件`，弹窗里填包名 `dsh-backlog.md`（GitHub 仓库地址、本地目录绝对路径同样可以），安装源保持默认即可。*
 
 ![侧边栏面板：工作区选择器、状态点与服务地址](.github/sidebar-panel.jpg)
 
-*侧边栏 `Backlog.md` 面板。下拉里每个工作区一行两栏：状态点 + 名称，第二行是服务地址（`127.0.0.1:6486`），没有配置的显示「未初始化」。面板不依赖会话，冷启动就能启动看板。*
+*侧边栏 `Backlog.md` 面板。下拉里每个工作区一行两栏：状态点 + 名称，第二行是服务地址（`127.0.0.1:6486`），没有配置的显示「未初始化」。面板不依赖会话，冷启动就能启动看板；面板右侧整块是所选工作区的看板（To Do / In Progress / Done 三列、筛选与「新建任务」都在 iframe 里）。*
+
+![对话区标签页：任务图谱](.github/task-graph.jpg)
+
+*对话区第三个标签页（对话 / 轨迹 / **Backlog.md**）里的「任务图谱」：899 个节点、257 条边，按任务 / 里程碑 / 文档 / 决策 / Wiki 页面上色。右上角是会话头的 `Backlog.md` 菜单——服务状态与端口（`127.0.0.1:16456`）、关闭、在新窗口打开、初始化、刷新状态。*
+
+![对话区标签页：统计](.github/statistics.jpg)
+
+*同一个标签页里的「统计」：过去一年的完成热力图、总数 / 已完成 / 完成率 / 草稿 / 任务平均耗时五张指标卡，以及整体进度条。整块标签页都是 iframe，吃满整个高度，不占顶部空间。*
 
 ## 关于 Backlog.md
 
@@ -56,7 +85,7 @@ backlog --version
 
 ## 安装
 
-装完刷新页面。四选一：
+装完刷新页面。四选一（A / B / C 也都能在界面里做：`插件` → `+ 添加插件`，弹窗接受包名、GitHub 仓库地址与本地目录绝对路径，见上面的[示意图](#快速安装)）：
 
 **A. 从 npm（最简单）**
 
