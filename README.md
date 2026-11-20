@@ -10,11 +10,11 @@
 
 [![npm version](https://img.shields.io/npm/v/dsh-backlog.md?logo=npm&label=npm)](https://www.npmjs.com/package/dsh-backlog.md)
 [![npm downloads](https://img.shields.io/npm/dm/dsh-backlog.md?logo=npm)](https://www.npmjs.com/package/dsh-backlog.md)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kuwork/DSH-Backlog.md/blob/main/LICENSE)
 [![node](https://img.shields.io/badge/node-%E2%89%A5%2020-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 [![GitHub stars](https://img.shields.io/github/stars/kuwork/DSH-Backlog.md?logo=github)](https://github.com/kuwork/DSH-Backlog.md/stargazers)
 
-简体中文 ｜ [English](README.en.md)
+简体中文 ｜ [English](https://github.com/kuwork/DSH-Backlog.md/blob/main/README.en.md)
 
 [功能亮点](#功能亮点) ·
 [这是什么](#这是什么) ·
@@ -29,7 +29,7 @@
 
 </div>
 
-![dsh-backlog.md：把 Backlog.md 看板嵌进 DeepSeek Harness，侧边栏面板与对话区标签页](.github/banner.png)
+![dsh-backlog.md：把 Backlog.md 看板嵌进 DeepSeek Harness，侧边栏面板与对话区标签页](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/banner.png)
 
 **dsh-backlog.md** 是一个 DeepSeek Harness（DSH）bundle 插件，把 Git 原生、Markdown 驱动的 AI 任务管理器 [Backlog.md](https://github.com/kuwork/Backlog.md) 的本地 Web 看板（`backlog browser`）直接嵌进 Harness 界面：侧边栏多一个 `Backlog.md` 面板，对话区多一个 `Backlog.md` 标签页，会话头多一个 `Backlog.md` 菜单。每个工作区运行独立看板进程，端口自动避让；本机缺少 `backlog` CLI 时会自动安装，无需手动准备环境，也不修改 Harness 本体任何代码。
 
@@ -70,22 +70,22 @@ dsh plugin --profile web add dsh-backlog.md
 
 也可以在界面里安装：打开 `插件` 页面 → 右上角 `+ 添加插件` → 输入包名 `dsh-backlog.md` → 点「安装」，装完刷新页面（弹窗同样接受 GitHub 仓库地址与本地目录绝对路径，安装源保持默认即可）。
 
-![插件页的「添加插件」入口：输入包名 dsh-backlog.md 后点安装](.github/plugin-install.jpg)
+![插件页的「添加插件」入口：输入包名 dsh-backlog.md 后点安装](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/plugin-install.jpg)
 
 > [!TIP]
 > 验证安装：执行 `dsh --profile web --dump-config`，输出中出现 `# == dsh-backlog.md` 配置层，且刷新页面后侧边栏出现 `Backlog.md`，即安装成功。
 
 ## 截图预览
 
-![侧边栏 Backlog.md 面板：工作区选择器、状态点与服务地址](.github/sidebar-panel.jpg)
+![侧边栏 Backlog.md 面板：工作区选择器、状态点与服务地址](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/sidebar-panel.jpg)
 
 *侧边栏 `Backlog.md` 面板不依赖会话，冷启动即可启动看板。工作区选择器每项显示状态点、名称与服务地址（如 `127.0.0.1:6486`），未配置的工作区显示「未初始化」；右侧整块内嵌所选工作区的看板，To Do / In Progress / Done 三列、筛选与「新建任务」都在 iframe 中。*
 
-![对话区 Backlog.md 标签页中的任务图谱](.github/task-graph.jpg)
+![对话区 Backlog.md 标签页中的任务图谱](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/task-graph.jpg)
 
 *对话区第三个标签页（对话 / 轨迹 / **Backlog.md**）里的「任务图谱」：按任务 / 里程碑 / 文档 / 决策 / Wiki 页面上色，右上角会话头菜单可查看服务状态与端口、关闭、在新窗口打开、初始化与刷新状态。*
 
-![对话区 Backlog.md 标签页中的统计视图](.github/statistics.jpg)
+![对话区 Backlog.md 标签页中的统计视图](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/statistics.jpg)
 
 *同一标签页里的「统计」：年度完成热力图、总数 / 已完成 / 完成率 / 草稿 / 任务平均耗时五张指标卡与整体进度条。整块标签页都是 iframe，吃满整个高度，不占用顶部空间。*
 
@@ -274,6 +274,6 @@ icon.svg          插件图标
 
 ## 许可证
 
-基于 [MIT License](LICENSE) 开源。
+基于 [MIT License](https://github.com/kuwork/DSH-Backlog.md/blob/main/LICENSE) 开源。
 
 <p align="right"><a href="#readme-top">↑ 回到顶部</a></p>

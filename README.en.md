@@ -10,11 +10,11 @@ A sidebar panel, a conversation-view tab, and a session-header menu — one `bac
 
 [![npm version](https://img.shields.io/npm/v/dsh-backlog.md?logo=npm&label=npm)](https://www.npmjs.com/package/dsh-backlog.md)
 [![npm downloads](https://img.shields.io/npm/dm/dsh-backlog.md?logo=npm)](https://www.npmjs.com/package/dsh-backlog.md)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/kuwork/DSH-Backlog.md/blob/main/LICENSE)
 [![node](https://img.shields.io/badge/node-%E2%89%A5%2020-339933?logo=node.js&logoColor=white)](https://nodejs.org)
 [![GitHub stars](https://img.shields.io/github/stars/kuwork/DSH-Backlog.md?logo=github)](https://github.com/kuwork/DSH-Backlog.md/stargazers)
 
-[简体中文](README.md) ｜ English
+[简体中文](https://github.com/kuwork/DSH-Backlog.md/blob/main/README.md) ｜ English
 
 [Features](#features) ·
 [What Is Backlog.md](#what-is-backlogmd) ·
@@ -29,7 +29,7 @@ A sidebar panel, a conversation-view tab, and a session-header menu — one `bac
 
 </div>
 
-![dsh-backlog.md: embed the Backlog.md board in DeepSeek Harness with a sidebar panel and a conversation tab](.github/banner-en.png)
+![dsh-backlog.md: embed the Backlog.md board in DeepSeek Harness with a sidebar panel and a conversation tab](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/banner-en.png)
 
 **dsh-backlog.md** is a DeepSeek Harness (DSH) bundle plugin that embeds the local web board of [Backlog.md](https://github.com/kuwork/Backlog.md) — a Git-native, Markdown-driven AI task manager — directly into the Harness UI through `backlog browser`: a `Backlog.md` panel in the sidebar, a `Backlog.md` tab in the conversation view, and a `Backlog.md` menu in the session header. Every workspace runs its own isolated board process with automatic port avoidance, and when the `backlog` CLI is missing from your machine, the plugin installs it automatically on first launch. No code changes to Harness itself are required.
 
@@ -70,22 +70,22 @@ The `backlog` CLI is installed automatically when the board first starts — no 
 
 You can also install from the UI: open the **Plugins** page → click **+ Add plugin** in the top-right corner → enter the package name `dsh-backlog.md` → click **Install**, then refresh the page (the dialog also accepts a GitHub repo URL or an absolute local directory path; leave the install source at its default).
 
-![The Add plugin dialog on the Plugins page: enter the package name dsh-backlog.md and click Install](.github/plugin-install.jpg)
+![The Add plugin dialog on the Plugins page: enter the package name dsh-backlog.md and click Install](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/plugin-install.jpg)
 
 > [!TIP]
 > Verify the install: run `dsh --profile web --dump-config`. A `# == dsh-backlog.md` section should appear in the output, and `Backlog.md` should show up in the sidebar after refreshing the page.
 
 ## Screenshots
 
-![The Backlog.md sidebar panel: workspace selector, status dots, and service addresses](.github/sidebar-panel.jpg)
+![The Backlog.md sidebar panel: workspace selector, status dots, and service addresses](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/sidebar-panel.jpg)
 
 *The sidebar `Backlog.md` panel works without an active conversation, so you can launch the board from a cold start. Each workspace row shows a status dot, its name, and the service address (e.g. `127.0.0.1:6486`); unconfigured workspaces read "Not initialized". The board of the selected workspace fills the right side — To Do / In Progress / Done columns, filters, and "New task" all run inside the iframe.*
 
-![The task graph in the conversation-view Backlog.md tab](.github/task-graph.jpg)
+![The task graph in the conversation-view Backlog.md tab](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/task-graph.jpg)
 
 *The **Task Graph** in the third conversation tab (Chat / Trajectory / **Backlog.md**), color-coded by task / milestone / doc / decision / wiki page. The session-header menu in the top-right shows service status and port, plus stop, open-in-new-window, initialize, and refresh actions.*
 
-![The statistics view in the conversation-view Backlog.md tab](.github/statistics.jpg)
+![The statistics view in the conversation-view Backlog.md tab](https://raw.githubusercontent.com/kuwork/DSH-Backlog.md/main/.github/statistics.jpg)
 
 *The **Statistics** view in the same tab: a yearly completion heatmap, five metric cards (total / completed / completion rate / drafts / average task duration), and an overall progress bar. The whole tab is an iframe that fills the full height without taking up top toolbar space.*
 
@@ -274,6 +274,6 @@ icon.svg          Plugin icon
 
 ## License
 
-Released under the [MIT License](LICENSE).
+Released under the [MIT License](https://github.com/kuwork/DSH-Backlog.md/blob/main/LICENSE).
 
 <p align="right"><a href="#readme-top">↑ Back to top</a></p>
