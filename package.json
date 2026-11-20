@@ -2,16 +2,27 @@
   "name": "dsh-backlog.md",
   "version": "0.2.0",
   "type": "module",
-  "description": "Backlog.md Browser integration for DeepSeek Harness: a Conversation view tab backed by a per-workspace `backlog browser` process.",
+  "description": "DeepSeek Harness plugin embedding the Backlog.md Markdown kanban board in a sidebar panel and conversation tab, with one backlog browser process per workspace.",
   "license": "MIT",
   "author": "kuwork",
   "keywords": [
     "dsh-plugin",
     "dsh-bundle",
     "deepseek-harness",
+    "deepseek",
     "backlog",
     "backlog.md",
-    "kanban"
+    "kanban",
+    "kanban-board",
+    "markdown",
+    "task-management",
+    "project-management",
+    "ai-agent",
+    "ai-coding",
+    "claude-code",
+    "git-native",
+    "local-first",
+    "developer-tools"
   ],
   "repository": {
     "type": "git",
@@ -34,7 +45,9 @@
     "locale/*.json",
     "icon.svg",
     ".github/*.jpg",
+    ".github/*.png",
     "README.md",
+    "README.en.md",
     "LICENSE"
   ],
   "engines": {
