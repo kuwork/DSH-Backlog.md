@@ -1,6 +1,6 @@
 {
   "name": "dsh-backlog.md",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "DeepSeek Harness plugin embedding the Backlog.md Markdown kanban board in a sidebar panel and conversation tab, with one backlog browser process per workspace.",
   "license": "MIT",
