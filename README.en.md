@@ -29,7 +29,7 @@ A sidebar panel, a conversation-view tab, and a session-header menu — one `bac
 
 </div>
 
-![dsh-backlog.md: embedding the Backlog.md kanban board in DeepSeek Harness, with a sidebar panel and a conversation-view tab](.github/banner.png)
+![dsh-backlog.md: embed the Backlog.md board in DeepSeek Harness with a sidebar panel and a conversation tab](.github/banner-en.png)
 
 **dsh-backlog.md** is a DeepSeek Harness (DSH) bundle plugin that embeds the local web board of [Backlog.md](https://github.com/kuwork/Backlog.md) — a Git-native, Markdown-driven AI task manager — directly into the Harness UI through `backlog browser`: a `Backlog.md` panel in the sidebar, a `Backlog.md` tab in the conversation view, and a `Backlog.md` menu in the session header. Every workspace runs its own isolated board process with automatic port avoidance, and when the `backlog` CLI is missing from your machine, the plugin installs it automatically on first launch. No code changes to Harness itself are required.
 
